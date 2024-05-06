@@ -17,9 +17,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'avatar',
         'name',
         'email',
+        'email_verified_at',
         'password',
+        'is_admin'
+
     ];
 
     /**
@@ -44,4 +48,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+   /**
+    * The groups that belong to the User
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+   public function groups()
+   {
+       return $this->belongsToMany(Group::class, 'groups_users');
+   }
 }
