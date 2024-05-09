@@ -22,7 +22,9 @@ class User extends Authenticatable
         'email',
         'email_verified_at',
         'password',
-        'is_admin'
+        'is_admin',
+        'last_message',
+        'last_message_date'
 
     ];
 
@@ -56,7 +58,7 @@ class User extends Authenticatable
     */
    public function groups()
    {
-       return $this->belongsToMany(Group::class, 'groups_users');
+       return $this->belongsToMany(Group::class, 'group_users');
    }
 
    public static function getUsersExceptUser(User $user) {

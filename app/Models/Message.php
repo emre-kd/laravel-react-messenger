@@ -34,7 +34,7 @@ class Message extends Model
 
     public function group()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Group::class);
     }
 
     /**

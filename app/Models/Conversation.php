@@ -22,7 +22,7 @@ class Conversation extends Model
      */
     public function lastMessage()
     {
-        return $this->belongsTo(User::class, 'last_message_id');
+        return $this->belongsTo(Message::class, 'last_message_id');
     }
 
     /**
