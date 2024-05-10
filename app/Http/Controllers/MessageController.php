@@ -33,7 +33,7 @@ class MessageController extends Controller
     }
 
     public function byGroup(Group $group) {
-        $messages = Message::where('group_id', $group_id)
+        $messages = Message::where('group_id', $group->id)
         ->latest()
         ->paginate(10);
 

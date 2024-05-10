@@ -9,7 +9,7 @@ class MessageAttachment extends Model
 {
     use HasFactory;
 
-    protected $filable = [
+    protected $fillable = [
         'message_id',
         'name',
         'path',
