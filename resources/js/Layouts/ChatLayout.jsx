@@ -4,6 +4,7 @@ import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
+
 const ChatLayout = ({ children }) => {
     const page = usePage();
     const conversations = page.props.conversations;
@@ -17,10 +18,10 @@ const ChatLayout = ({ children }) => {
 
 
     const onSearch = (ev) => {
-        const search = ev.target.value.toLower.Case();
+        const search = ev.target.value.toLowerCase();
         setLocalConversations(
             conversations.filter((conversation) => {
-                return conversation.name.toLowerCase().include(search);
+                return conversation.name.toLowerCase().includes(search);
             })
         );
     };

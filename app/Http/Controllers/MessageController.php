@@ -6,8 +6,15 @@ use App\Models\Message;
 use App\Models\MessageAttachment;
 use App\Models\User;
 use App\Models\Group;
+use App\Models\Conversation;
+
+use App\Events\SocketMessage;
 
 use App\Http\Resources\MessageResource;
+
+use App\Http\Requests\StoreMessageRequest;
+use App\Http\Requests\ProfileUpdateRequest;
+
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -76,7 +83,7 @@ class MessageController extends Controller
 
         $files = $data['attachments'] ?? [];
 
-        $message = Message::crate($data);
+        $message = Message::create($data);
 
         $attachments = [];
         if($files) {
@@ -102,7 +109,7 @@ class MessageController extends Controller
             Conversation::updateConversationWithMessage($receiverId, auth()->id(), $message);
         }
 
-        if($group_id) {
+        if($groupId) {
             Group::updateGroupWithMessage($groupId, $message);
         }
         SocketMessage::dispatch($message);

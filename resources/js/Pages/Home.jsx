@@ -8,14 +8,15 @@ import MessageItem from "@/Components/App/MessageItem";
 import MessageInput from "@/Components/App/MessageInput";
 
 function Home({ selectedConversation = null, messages = null }) {
-
     const [localMessages, setLocalMessages] = useState([]);
     const messagesCtrRef = useRef(null);
 
     useEffect(() => {
         setTimeout(() => {
-            messagesCtrRef.current.scrollTop = messagesCtrRef.current.scrollHeight;
-
+            if (messagesCtrRef.current) {
+                messagesCtrRef.current.scrollTop =
+                    messagesCtrRef.current.scrollHeight;
+            }
         }, 10);
     }, [selectedConversation]);
 
@@ -53,13 +54,16 @@ function Home({ selectedConversation = null, messages = null }) {
                         )}
                         {localMessages.length > 0 && (
                             <div className="flex-1 flex flex-col">
-                                {localMessages.map ((message) => (
-                                    <MessageItem  key={message.id} message={message} />
+                                {localMessages.map((message) => (
+                                    <MessageItem
+                                        key={message.id}
+                                        message={message}
+                                    />
                                 ))}
                             </div>
                         )}
                     </div>
-                  <MessageInput conversation={selectedConversation} />
+                    <MessageInput conversation={selectedConversation} />
                 </>
             )}
         </>
