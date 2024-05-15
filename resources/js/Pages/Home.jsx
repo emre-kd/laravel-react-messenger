@@ -14,10 +14,14 @@ function Home({ selectedConversation = null, messages = null }) {
     const { on } = useEventBus();
 
     const messageCreated = (message) => {
-        if (selectedConversation && selectedConversation.is_group && selectedConversation.id == message.group_id) {
+        if (selectedConversation &&
+            selectedConversation.is_group &&
+            selectedConversation.id == message.group_id) {
             setLocalMessages((prevMessages) => [...prevMessages, message]);
         }
-        if (selectedConversation && selectedConversation.is_user && (selectedConversation.id == message.sender_id || selectedConversation.id == message.receiver_id) ) {
+        if (selectedConversation &&
+            selectedConversation.is_user &&
+            (selectedConversation.id == message.sender_id || selectedConversation.id == message.receiver_id) ) {
             setLocalMessages((prevMessages) => [...prevMessages, message]);
         }
 
@@ -30,7 +34,7 @@ function Home({ selectedConversation = null, messages = null }) {
                     messagesCtrRef.current.scrollHeight;
             }
         }, 10);
-        const offCreated = on('messsage.created', messageCreated);
+        const offCreated = on('message.created', messageCreated);
 
         return () => {
              offCreated();
