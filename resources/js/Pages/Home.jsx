@@ -76,6 +76,7 @@ function Home({ selectedConversation = null, messages = null }) {
                         )}
                         {localMessages.length > 0 && (
                             <div className="flex-1 flex flex-col">
+                            <div ref={loadMoreIntersect}></div>
                                 {localMessages.map((message) => (
                                     <MessageItem
                                         key={message.id}
