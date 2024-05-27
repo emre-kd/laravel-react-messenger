@@ -102,7 +102,7 @@ function Home({ selectedConversation = null, messages = null }) {
 
         if(loadMoreIntersect.current) {
             setTimeout(() => {
-                observer.observe(loadMore(Intersect.current));
+                observer.observe(loadMoreIntersect.current);
             }, 100);
         }
 
@@ -110,7 +110,7 @@ function Home({ selectedConversation = null, messages = null }) {
             observer.disconnect();
         };
 
-    }, [localMessages])
+    }, [localMessages]);
 
     return (
         <>
