@@ -32,6 +32,9 @@ const MessageItem = ({ message }) => {
                 <div className="chat-messsage">
                     <div className="chat-message-content">
 
+
+
+
                     <ReactMarkdown>{String(message.message)}</ReactMarkdown>
 
                     </div>
