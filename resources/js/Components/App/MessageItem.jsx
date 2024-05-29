@@ -35,7 +35,7 @@ const MessageItem = ({ message }) => {
 
 
 
-                    <ReactMarkdown>{String(message.message)}</ReactMarkdown>
+                    <ReactMarkdown>{String(message.message)}</ReactMarkdown> s
 
                     </div>
                 </div>
